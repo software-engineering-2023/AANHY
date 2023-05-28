@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+     <title>View Bank Transactions</title>
+    <style>
+        body {
+            background-color: #0a192f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #14213d;
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #fff;
+        }
+
+        th {
+            background-color: #ffb703;
+            color: #fff;
+        }
+
+        button {
+            background-color: #ffb703;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #ff8f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Bank Transactions</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2023-05-01</td>
+                    <td>Payment received</td>
+                    <td>$500.00</td>
+                </tr>
+                <tr>
+                    <td>2023-04-28</td>
+                    <td>Withdrawal</td>
+                    <td>$100.00</td>
+                </tr>
+                <tr>
+                    <td>2023-04-25</td>
+                    <td>Deposit</td>
+                    <td>$300.00</td>
+                </tr>
+                <!-- Add more transaction rows here -->
+            </tbody>
+        </table>
+
+        <button onclick="location.href='ViewCreditCardTransactions.html'">View Credit Card Transactions</button>
+
+
+        <button onclick="location.href='ClientHomepage.html'">Go back to Homepage</button>
+
+        
+    </div>
+</body>
+</html>

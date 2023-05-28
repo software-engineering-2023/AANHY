@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>View Credit Card Transactions</title>
+  <style>
+        body {
+            background-color: #0a192f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #14213d;
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #fff;
+        }
+
+        th {
+            background-color: #ffb703;
+            color: #fff;
+        }
+
+        button {
+            background-color: #ffb703;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #ff8f00;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h2>View Credit Card Transactions</h2>
+
+    <table>
+        <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+      
+      <tr>
+        <td>2023-05-01</td>
+        <td>Grocery Store</td>
+        <td>$50.00</td>
+      </tr>
+      <tr>
+        <td>2023-04-27</td>
+        <td>ZARA</td>
+        <td>$75.99</td>
+      </tr>
+      <tr>
+        <td>2023-04-22</td>
+        <td>Sizzler</td>
+        <td>$30.50</td>
+      </tr>
+    <tr>
+        <td>2023-04-22</td>
+        <td>Starbucks</td>
+        <td>$5.50</td>
+      </tr>
+        <tr>
+        <td>2023-04-23</td>
+        <td>Krispy Kream</td>
+        <td>$3.50</td>
+      </tr>
+    </table>
+
+    <button onclick="goBack()">Go Back</button>
+    <button onclick="goToHomepage()">Go to Homepage</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function goToHomepage() {
+            window.location.href = "ClientHomepage.html";
+        }
+    </script>
+  </div>
+</body>
+</html>

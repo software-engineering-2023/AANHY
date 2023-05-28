@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Banker Home Page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0a192f;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+            }
+
+                nav ul li {
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+
+                    nav ul li a {
+                        color: #0a192f;
+                        text-decoration: none;
+                        padding: 5px 10px;
+                        border-radius: 3px;
+                    }
+
+                        nav ul li a:hover {
+                            background-color: #333;
+                            color: #fff;
+                        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        footer {
+            background-color: #0a192f;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome, Banker!</h1>
+    </header>
+
+    <nav>
+        <ul>
+          
+            <li><a href="customer-list.aspx">Customer List</a></li>
+            <li><a href="loan-req.aspx">Loan Applications</a></li>
+            <li><a href="CreditCardApp.html">Credit Card Applications</a></li>
+            <li><a href="Replacement.html">Replacement Requests</a></li>
+
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="Log in.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <section class="content">
+        <h2>Banker Dashboard</h2>
+        <p>Welcome to your banker dashboard. Here, you can manage customer accounts, review loan and credit card applications, generate reports, and more.</p>
+        <p>Use the navigation menu above to access different sections of the banker portal.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 AANHY Bank. All rights reserved.</p>
+    </footer>
+</body>
+</html>

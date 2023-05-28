@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Replacements Requests</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #333;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Credit Card Requests</h1>
+    </header>
+    <div class="content">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            <tr>
+                <td><a href="javascript:void(0);" onclick="showLoanDetails('loanDetails1')">Carlos Sainz</a></td>
+                <td>Carlos.saniz@ferrari.com</td>
+                <td>01234556</td>
+            </tr>
+        </table>
+
+        <!-- Loan Details -->
+        <div id="loanDetails1" class="loan-details" style="display: none;">
+            <h3>Replacement Request of Carlos Sainz</h3>
+            <p><strong>Email:</strong> Carlos.saniz@ferrari.com</p>
+            <p><strong>Credit Card Number:</strong> 123456789 LE</p>
+            <p><strong>Reason for Replacement:</strong> I am writing to request a replacement for my lost credit card. Unfortunately, I have misplaced my card and despite thorough searching, I have been unable to locate it. I am concerned about the potential misuse of my card by unauthorized individuals, and I believe it is in my best interest to have it replaced as soon as possible.</p>
+            <p>Considering the sensitive nature of the information associated with the card, including my personal and financial details, I strongly believe that taking prompt action to replace the card will help safeguard my account from any fraudulent activities.</p>
+            <p>I assure you that I have taken all necessary precautions to protect my account, including notifying your customer service immediately upon discovering the loss. I would greatly appreciate it if you could expedite the replacement process to minimize any inconvenience caused by the loss of my card.</p>
+            <p>Please let me know if there are any further steps or documents required from my end to proceed with the replacement. I am more than willing to provide any necessary information to facilitate the process.</p>
+            <p>Thank you for your prompt attention to this matter. I value the security measures implemented by your bank and trust that the replacement process will be handled efficiently.</p>
+            <form id="decisionForm1" onsubmit="event.preventDefault(); makeDecision('decisionForm1'); return false;">
+                <label for="clientId1">Client ID:</label>
+                <input type="text" id="clientId1" name="clientId" value="12345" readonly>
+                <div class="decision-buttons">
+                    <label for="decision1">Decision:</label>
+                    <select id="decision1" name="decision" required>
+                        <option value="" disabled selected>Select decision</option>
+                        <option value="Replace">Replace</option>
+                        <option value="Don't Replace">Don't Replace</option>
+                    </select>
+                    <button type="submit">SUBMIT</button>
+                </div>
+                <p class="message" style="display: none;"></p>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <a href="BankerHomepage.aspx">
+            <button>Go Back to Banker Home Page</button>
+        </a>
+        <p>&copy; 2023 Your Bank. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showLoanDetails(loanId) {
+            var loanDetails = document.getElementById(loanId);
+            loanDetails.style.display = "block";
+        }
+
+        function makeDecision(formId) {
+            var form = document.getElementById(formId);
+            var clientId = form.clientId.value;
+            var decision = form.decision.value;
+
+            if (decision === "Replace") {
+                // Create new credit card logic here
+                alert("New credit card created for Client ID: " + clientId);
+            }
+
+            // Display the decision message on top
+            var message = form.parentNode.querySelector(".message");
+            message.style.display = "block";
+            message.textContent = "Decision: " + decision;
+
+            // Hide the loan details
+            var loanDetails = form.parentNode;
+            loanDetails.style.display = "none";
+
+            alert("Decision made for Client ID: " + clientId + ", Decision: " + decision);
+        }
+    </script>
+</body>
+</html>

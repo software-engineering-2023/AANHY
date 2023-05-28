@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Client Homepage</title>
+    <style>
+        body {
+            background-color: #0a192f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #14213d;
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #ffb703;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #ff8f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Client Homepage</h2>
+
+        <h3>Account Information</h3>
+        <p>Account Number: <span id="accountNumber">123456789</span></p>
+        <p>Current Balance: $<span id="currentBalance">20000</span></p>
+
+        <h3>Transactions</h3>
+        <button onclick="viewTransactions()">View Transactions</button>
+
+
+        <h3>Payment</h3>
+        <button onclick="paymentForOthers()">Payment for Others</button>
+
+
+
+        <h3>Transfers</h3>
+        <button onclick="internalTransfer()">Internal Transfer</button>
+        <button onclick="domesticTransfer()">Domestic Transfer</button>
+         <button onclick="internationalTransfer()">International Transfer</button>
+
+
+        <h3>Set A Reminder</h3>
+        <button onclick="remindme()">Press Here</button>
+
+
+        <h3>Report</h3>
+        <button onclick="report()">Press Here</button>
+
+
+
+
+        <h3>Requests</h3>
+        <button onclick="chequeBookRequest()">Cheque Book Request</button>
+
+
+        <h3>Products</h3>
+        <button onclick="applyForCreditCard()">Credit Card</button>
+        <button onclick="applyForLoan()">Loan</button>
+
+        <script>
+            function viewTransactions() {
+                // Redirect to the transaction viewing page
+                window.location.href = "viewBankTransactions.html";
+            }
+
+            function remindme() {
+                // Redirect to the transaction viewing page
+                window.location.href = "RemindersForCCandLoans.html";
+            }
+
+            function payCreditCard() {
+                // Redirect to the credit card payment page
+                window.location.href = "Credit Card Payment.html";
+            }
+
+            function payLoan() {
+                // Redirect to the loan payment page
+                window.location.href = "pay-loan.html";
+            }
+
+            function paymentForOthers() {
+                // Redirect to the payment for others page
+                window.location.href = "payment-for-others.html";
+            }
+
+            function internalTransfer() {
+                // Redirect to the internal transfer page
+                window.location.href = "internal-transfer.html";
+            }
+
+            function domesitcTransfer() {
+                // Redirect to the external transfer page
+                window.location.href = "external-transfer.html";
+            }
+
+            function internationalTransfer() {
+                // Redirect to the external transfer page
+                window.location.href = "external-transfer.html";
+            }
+
+            function chequeBookRequest() {
+                // Redirect to the cheque book request page
+                window.location.href = "cheque-book-request.html";
+            }
+
+           
+
+            function redeemPoints() {
+                // Redirect to the statement request page
+                window.location.href = "View Credit Card Points.html";
+            }
+
+            function report() {
+                // Redirect to the statement request page
+                window.location.href = "ReportCCTheft.html";
+            }
+
+            function applyForCreditCard() {
+                // Redirect to the credit card application page
+                window.location.href = "CreditCardIntro.html";
+            }
+
+            function applyForLoan() {
+                // Redirect to the loan application page
+                window.location.href = "apply-for-loan.html";
+            }
+
+            function overview() {
+                // Redirect to the loan application page
+                window.location.href = "cardsandloans.html";
+            }
+        </script>
+    </div>
+</body>
+</html>
