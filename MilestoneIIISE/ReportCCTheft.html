@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+      <title>Report Credit Card Theft/Loss/Damage</title>
+    <style>
+        body {
+            background-color: #0a192f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #14213d;
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #0a192f;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #ffb703;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff8f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Report Credit Card Theft/Loss/Damage</h2>
+
+        <form action="ConfirmationforTheft.aspx" method="post">
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter your card number" required>
+
+            <label for="reason">Reason:</label>
+            <textarea id="reason" name="reason" placeholder="Provide details about the theft/loss/damage" required></textarea>
+
+            <button type="submit">Report and Apply for Replacement</button>
+                    <a href="ClientHomepage.html"><button>Go Back to Homepage</a>
+
+        </form>
+    </div>
+</body>
+</html>

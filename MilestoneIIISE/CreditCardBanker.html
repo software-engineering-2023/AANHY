@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+<style>
+        body {
+            background-color: #0a192f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #14213d;
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #0a192f;
+            margin-bottom: 20px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #ffb703;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff8f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Credit Card Application</h2>
+        <form>
+            <label for="applicant-name">Applicant Name:</label>
+            <input type="text" id="applicant-name" disabled>
+
+            <label for="applicant-id">Applicant ID:</label>
+            <input type="text" id="applicant-id" disabled>
+
+            <label for="credit-id">Credit Score:</label>
+            <input type="text" id="crdit-id" disabled>
+
+            <label for="credit-limit">Requested Credit Limit:</label>
+            <input type="text" id="credit-limit" disabled>
+
+            <label for="income">Annual Income:</label>
+            <input type="text" id="income" disabled>
+
+            <label for="employment">Employment Status:</label>
+            <input type="text" id="employment" disabled>
+
+
+            <label for="address">Address:</label>
+            <textarea id="address" disabled></textarea>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" disabled></textarea>
+
+            <button type="submit">Approve</button>
+            <button type="submit">Reject</button>
+
+            <a href="ClientHomepage.html"><button>Go Back to Homepage</a>
+        </form>
+    </div>
+</body>
+</html>

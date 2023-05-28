@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>My Credit Cards</title>
+    <style>
+        body {
+            background-color: #0a192f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #14213d;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #fff;
+        }
+
+        th {
+            background-color: #0a192f;
+        }
+
+        td {
+            background-color: #14213d;
+        }
+
+        /* Button styles */
+        .button {
+            display: inline-block;
+            background-color: #ffb703;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .button:hover {
+                background-color: #ff8f00;
+            }
+    </style>
+<script>
+        function deactivateCreditCard(row) {
+            var statusCell = row.querySelector('.status');
+            statusCell.textContent = 'Not Active';
+            statusCell.style.color = '#e53935';
+        }
+</script>
+</head>
+<body>
+    <div class="container">
+        <h2>My Credit Cards</h2>
+        <table>
+            <tr>
+                <th>Credit Card Number</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>123456789</td>
+                <td>400,000 LE</td>
+                <td class="status">Active</td>
+                <td>
+                    <a href="Credit Card Payment.html" class="button">Pay Credit Card</a>
+                    <a href="ViewCreditCardPoints.html" class="button">Redeem Points</a>
+                    <a href="#" class="button deactivate" onclick="deactivateCreditCard(this.parentNode.parentNode);">Deactivate</a>
+                </td>
+            </tr>
+            <tr>
+                <td>987654321</td>
+                <td>20,000 LE</td>
+                <td class="status">Active</td>
+                <td>
+                    <a href="Credit Card Payment.html" class="button">Pay Credit Card</a>
+                    <a href="ViewCreditCardPoints.html" class="button">Redeem Points</a>
+                    <a href="#" class="button deactivate" onclick="deactivateCreditCard(this.parentNode.parentNode);">Deactivate</a>
+                </td>
+            </tr>
+        </table>
+
+        <!-- New button -->
+        <a href="CreditCardIntro.html" class="button">Go Back to CreditCardHome</a>
+    </div>
+</body>
+</html>
