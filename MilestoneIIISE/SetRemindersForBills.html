@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   <title>Payment Reminders</title>
+    <style>
+        body {
+            background-color: #0a192f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #14213d;
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #0a192f;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #ffb703;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff8f00;
+        }
+
+        .confirmation-comment {
+            font-size: 16px;
+            font-style: italic;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Payment Reminders</h2>
+
+        <form>
+            <label for="billType">Bill Type:</label>
+            <select id="billType" name="billType">
+                <option value="gas">Gas</option>
+                <option value="electricity">Electricity</option>
+                <option value="water">Water</option>
+                <option value="telephone">Telephone</option>
+            </select>
+
+            <label for="billNumber">Bill Number:</label>
+            <input type="text" id="billNumber" name="billNumber" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="date">Date:</label>
+            
+
+            <button type="button" onclick="setReminder()">Set Reminder</button>
+        </form>
+
+        <p id="confirmationMessage" class="confirmation-text"></p>
+
+        <div id="commentSection" style="display: none;">
+            <p id="comment" class="confirmation-comment"></p>
+        </div>
+
+        <button onclick="goBack()">Go Back</button>
+        <button onclick="goToHomepage()">Go to Homepage</button>
+
+        <script>
+            function setReminder() {
+                var billType = document.getElementById("billType").value;
+                var billNumber = document.getElementById("billNumber").value;
+                var email = document.getElementById("email").value;
+                var day = document.getElementById("day").value;
+                var month = document.getElementById("month").value;
+                var year = document.getElementById("year").value;
+
+                var confirmationMessage = document.getElementById("confirmationMessage");
+                confirmationMessage.innerText = "Reminder set for " + billType + " bill number " + billNumber + " to be sent to " + email + " on " + day + "/" + month + "/" + year;
+                confirmationMessage.style.display = "block";
+
+                var commentSection = document.getElementById("commentSection");
+                commentSection.style.display = "block";
+                var comment = document.getElementById("comment");
+                comment.innerText = "Reminder set successfully!";
+            }
+
+            function goBack() {
+                window.history.back();
+            }
+
+            function goToHomepage() {
+                window.location.href = "ClientHomepage.html";
+            }
+        </script>
+    </div>
+</body>
+</html>

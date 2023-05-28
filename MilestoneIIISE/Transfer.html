@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        /* CSS styling for the form goes here */
+
+        /* Body styles */
+        body {
+            background-color: #0a192f;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+
+        /* Form container styles */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #14213d;
+            border-radius: 10px;
+        }
+
+        /* Heading styles */
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Label styles */
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Input and textarea styles */
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #0a192f;
+            margin-bottom: 20px;
+        }
+
+        /* Button styles */
+        button {
+            background-color: #ffb703;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff8f00;
+        }
+
+        /* Section styles */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Custom styles */
+        #chequeSection button {
+            margin-top: 40px;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #fff;
+            text-align: left;
+        }
+
+        th {
+            background-color: #14213d;
+            color: #fff;
+        }
+
+        td {
+            background-color: #fff;
+            color: #0a192f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Bank Personal Financial Management</h2>
+        <button class="section-button" onclick="showSection('accounts')">View Accounts</button>
+        <button class="section-button" onclick="showSection('transfer')">Bank Transfer</button>
+        <button class="section-button" onclick="showSection('cheque')">Submit Cheque</button>
+    </div>
+
+    <div id="accountsSection" class="container section active">
+        <h2>Accounts</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Account Name</th>
+              <th>Account Number</th>
+              <th>Balance</th>
+              <th>Account Type</th>
+            </tr>
+          </thead>
+          <tbody id="accountList">
+            <tr data-account="123456789" data-balance="5000"> <!-- Added 'data-balance' attribute -->
+              <td>Ahmed Wael</td>
+              <td>123456789</td>
+              <td class="balance">$5000</td>
+              <td>Current</td>
+               <!-- Added 'balance' class -->
+            </tr>
+          </tbody>
+        </table>
+      
+        <button onclick="goToHomepage()">Back to Homepage</button>
+      </div>
+      
+    
+    <div id="transferSection" class="container section">
+        <h2>Bank Transfer</h2>
+        <p>Transfer funds to another account:</p>
+        <label for="fromAccount">From Account:</label>
+        <select id="fromAccount">
+            <option value="123456789">Ahmed Wael - 123456789</option>
+        </select>
+        <label for="toAccount">To Account:</label>
+        <input type="text" id="toAccount" placeholder="Enter account number">
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" placeholder="Enter amount">
+        
+        <label for="transferType">Transfer Type:</label>
+        <select id="transferType">
+            <option value="domestic">Domestic</option>
+            <option value="internal">Internal</option>
+            <option value="international">International</option>
+        </select>
+        
+        <button onclick="performBankTransfer()">Transfer</button>
+        <button onclick="goToHomepage()">Back to Homepage</button>
+    </div>
+
+    <div id="chequeSection" class="container section">
+        <h2>Submit Cheque</h2>
+        <form id="chequeForm" onsubmit="handleChequeSubmission(event)">
+            <label for="chequeNumber">Cheque Number:</label>
+            <input type="text" id="chequeNumber" placeholder="Enter cheque number" />
+
+            <label for="chequeAmount">Amount:</label>
+            <input type="text" id="chequeAmount" placeholder="Enter cheque amount" />
+
+            <label for="chequeAccount">From Account:</label>
+            <select id="chequeAccount">
+                <option value="123456789">Account Number: 123456789</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="commentSection" class="container section">
+        <h2>Comments</h2>
+        <ul id="commentList"></ul>
+    </div>
+
+    <script>
+        // JavaScript functions to show sections and go back to the homepage
+
+        // JavaScript functions to show sections and go back to the homepage
+
+function showSection(section) {
+  // Hide all sections
+  var sections = document.getElementsByClassName('section');
+  for (var i = 0; i < sections.length; i++) {
+    sections[i].classList.remove('active');
+  }
+
+  // Show the selected section
+  var selectedSection = document.getElementById(section + 'Section');
+  selectedSection.classList.add('active');
+}
+
+function goToHomepage() {
+  showSection('accounts');
+}
+
+// JavaScript function to handle bank transfer
+
+function performBankTransfer() {
+  var fromAccount = document.getElementById('fromAccount').value;
+  var toAccount = document.getElementById('toAccount').value;
+  var amount = document.getElementById('amount').value;
+  var transferType = document.getElementById('transferType').value;
+
+  // Validate the form fields
+  if (!fromAccount || !toAccount || !amount || !transferType) {
+    alert('Please fill in all the fields.');
+    return;
+  }
+
+  var transferDetails = {
+    fromAccount: fromAccount,
+    toAccount: toAccount,
+    amount: amount,
+    transferType: transferType
+  };
+
+  // Send the transfer details to the server for processing
+  sendTransferDetails(transferDetails);
+}
+
+function sendTransferDetails(details) {
+  // Simulating server request
+  setTimeout(function () {
+    var success = true; // Always consider transfer as successful
+
+    if (success) {
+      var accountElement = document.querySelector(
+        'tr[data-account="' + details.fromAccount + '"]'
+      );
+      if (!accountElement) {
+        alert("Invalid account number. Please enter a valid account number.");
+        return;
+      }
+
+      var balanceElement = accountElement.querySelector(".balance");
+      if (!balanceElement) {
+        alert("Invalid balance element. Please check the account information.");
+        return;
+      }
+
+      var currentBalance = parseFloat(
+        balanceElement.textContent.replace(/[^0-9.-]+/g, "")
+      );
+      if (isNaN(currentBalance)) {
+        alert("Invalid balance value. Please check the account information.");
+        return;
+      }
+
+      var updatedBalance = currentBalance - parseFloat(details.amount);
+      balanceElement.textContent =
+        "Balance: $" + updatedBalance.toFixed(2);
+
+      alert(
+        'Transfer successful! Details:\n' +
+        'From Account: Ahmed Wael\n' +
+        'To Account: ' + details.toAccount + '\n' +
+        'Amount: ' + details.amount + '\n' +
+        'Transfer Type: ' + details.transferType
+      );
+    } else {
+      alert('Transfer failed! Please check your account details and try again.');
+    }
+  }, 1000);
+}
+
+
+
+    </script>
+</body>
+</html>
