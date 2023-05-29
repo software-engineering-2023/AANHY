@@ -1,0 +1,96 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SystemAdminHomepage.aspx.cs" Inherits="SoftwareEngineering.SystemAdminHomepage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+     <title>System Admin Home Page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0a192f;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+            }
+
+                nav ul li {
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+
+                    nav ul li a {
+                        color: #0a192f;
+                        text-decoration: none;
+                        padding: 5px 10px;
+                        border-radius: 3px;
+                    }
+
+                        nav ul li a:hover {
+                            background-color: #333;
+                            color: #fff;
+                        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        footer {
+            background-color: #0a192f;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome, System Admin!</h1>
+    </header>
+      </div>
+
+        <a href="Log in.aspx" class="logout-button">Log out</a>
+    </div>
+    <nav>
+        <ul>
+
+            <li><a href="System Admin.aspx">User Complaints</a></li>
+
+            <li><a href="FAQ.aspx">Frequently Asked Questions</a></li>
+
+        </ul>
+    </nav>
+
+    <section class="content">
+        <h2>System Admin Dashboard</h2>
+        <p>Welcome to your System Admin dashboard. Here, you can manage the user complaints and answer the frequently asked questions, so they can appear to the clients with the answers.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Your Bank. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

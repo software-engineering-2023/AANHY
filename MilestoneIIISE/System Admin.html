@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>System Admin - Online Banking</title>
+    <style>
+        /* CSS styling for the page goes here */
+
+        /* Body styles */
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .section-header h3 {
+            margin: 0;
+        }
+
+        .section-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .complaint-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .complaint-box h4 {
+            margin-top: 0;
+        }
+
+        .complaint-box p {
+            margin-bottom: 0;
+        }
+
+        .checkbox {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .logout-button {
+            display: block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>System Admin Dashboard</h2>
+
+        <div class="section">
+            <div class="section-header">
+                <h3>User Complaints</h3>
+                <a href="#">View All</a>
+            </div>
+            <div class="section-content">
+                <div class="complaint-box">
+                    <h4>User Loan Application Complaint</h4>
+                    <p>User PQR has reported an issue with applying for a loan. The user mentioned that when they try to apply for a loan, they encounter an error message indicating that their application cannot be processed at the moment. Please investigate and resolve the issue promptly to ensure a smooth loan application process for the users.</p>
+                    <input type="checkbox" class="checkbox" onchange="hideComplaint(this)">
+                </div>
+
+                <div class="complaint-box">
+                    <h4>User Credit Card Application Complaint</h4>
+                    <p>User ABC has reported an issue with applying for a credit card. The user mentioned that when they try to apply for a credit card, they receive an error message stating that their application cannot be processed at the moment. Please investigate and address the issue as soon as possible.</p>
+                    <input type="checkbox" class="checkbox" onchange="hideComplaint(this)">
+                </div>
+
+                <div class="complaint-box">
+                    <h4>User Login Page Complaint</h4>
+                    <p>User XYZ reported an issue with the login page. The user mentioned that the "Forgot Password" link is not working. Please investigate and fix the issue promptly.</p>
+                    <input type="checkbox" class="checkbox" onchange="hideComplaint(this)">
+                </div>
+
+                <div class="complaint-box">
+                    <h4>User Account Complaint</h4>
+                    <p>User LMN reported an issue with adding money to their account. The user mentioned that when they try to add funds, the transaction fails, and the balance remains unchanged. Please investigate and resolve the issue to ensure a seamless experience for users trying to add money to their accounts.</p>
+                    <input type="checkbox" class="checkbox" onchange="hideComplaint(this)">
+                </div>
+            </div>
+        </div>
+
+        <a href="SystemAdminHomepage.aspx" class="logout-button">Back</a>
+    </div>
+
+    <script>
+        function hideComplaint(checkbox) {
+            var complaintBox = checkbox.parentNode;
+            complaintBox.style.display = checkbox.checked ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
