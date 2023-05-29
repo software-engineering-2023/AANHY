@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        /* CSS styling for the page goes here */
+
+        /* Body styles */
+        body {
+            background-color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #14213d;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #fff;
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #14213d;
+            color: #14213d;
+        }
+
+        th {
+            background-color: #0066cc;
+            color: #fff;
+        }
+
+        td {
+            background-color: #fff;
+        }
+
+        /* Button styles */
+        .button {
+            display: inline-block;
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+            .button:hover {
+                background-color: #ff8f00;
+            }
+
+        /* Footer styles */
+        .footer {
+            background-color: #0066cc;
+            padding: 20px;
+            text-align: center;
+        }
+
+            .footer p {
+                color: #fff;
+                margin: 0;
+            }
+
+        /* Bank logo styles */
+        .logo {
+            display: inline-block;
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2><img src="logo2.jpg" alt="Bank Logo" class="logo"> My Certificates</h2>
+        <table id="certificateTable">
+            <tr>
+                <th>Certificate ID</th>
+                <th>Certificate Type</th>
+                <th>Certificate Amount</th>
+                <th>Certificate Account</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Interest Rate</th>
+                <th>Action</th>
+            </tr>
+            <tr id="row_1">
+                <td>1</td>
+                <td>1 Year Certificate</td>
+                <td>$10,000</td>
+                <td>Savings Account</td>
+                <td>2023-01-01</td>
+                <td>2024-01-01</td>
+                <td>5%</td>
+                <td>
+                    <a href="#" class="button" onclick="confirmBreak(1, 10000, 5)">Break Certificate</a>
+                </td>
+            </tr>
+            <tr id="row_2">
+                <td>2</td>
+                <td>2 Year Certificate</td>
+                <td>$20,000</td>
+                <td>Current Account</td>
+                <td>2022-06-01</td>
+                <td>2024-06-01</td>
+                <td>6%</td>
+                <td>
+                    <a href="#" class="button" onclick="confirmBreak(2, 20000, 6)">Break Certificate</a>
+                </td>
+            </tr>
+            <tr id="row_3">
+                <td>3</td>
+                <td>3 Year Certificate</td>
+                <td>$30,000</td>
+                <td>Savings Account</td>
+                <td>2023-03-15</td>
+                <td>2026-03-15</td>
+                <td>7%</td>
+                <td>
+                    <a href="#" class="button" onclick="confirmBreak(3, 30000, 7)">Break Certificate</a>
+                </td>
+            </tr>
+        </table>
+
+        <!-- New buttons -->
+        <a href="deposit-home.html" class="button">Go Back</a>
+        <a href="home.html" class="button"><img src="img.png" alt="Home" width="24" height="24"></a>
+    </div>
+
+    <footer class="footer">
+        <p>My Company - All rights reserved &copy; 2023</p>
+    </footer>
+
+    <script>function confirmBreak(certificateId, certificateAmount, interestRate) {
+            var confirmation = confirm(
+                "Are you sure you want to break this certificate? The certificate amount + interest will be added back to your account - the breaking fee."
+            );
+            if (confirmation) {
+                var row = document.getElementById("row_" + certificateId);
+                row.parentNode.removeChild(row);
+                alert("The certificate has been broken successfully.");
+            }
+        }</script>
+</body>
+</html>

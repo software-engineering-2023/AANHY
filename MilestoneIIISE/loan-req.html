@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Requests</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+            }
+
+                nav ul li {
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+
+                    nav ul li a {
+                        color: #333;
+                        text-decoration: none;
+                        padding: 5px 10px;
+                        border-radius: 3px;
+                    }
+
+                        nav ul li a:hover {
+                            background-color: #333;
+                            color: #fff;
+                        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <h1>Loan Requests</h1>
+    </header>
+    <div class="content">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Loan Type</th>
+                <th>Amount</th>
+            </tr>
+            <tr>
+                <td><a href="javascript:void(0);" onclick="showLoanDetails('loanDetails1')">John Doe</a></td>
+                <td>john.doe@example.com</td>
+                <td>Personal Loan</td>
+                <td>$10,000</td>
+            </tr>
+            <tr>
+                <td><a href="javascript:void(0);" onclick="showLoanDetails('loanDetails2')">Jane Smith</a></td>
+                <td>jane.smith@example.com</td>
+                <td>Mortgage Loan</td>
+                <td>$200,000</td>
+            </tr>
+            <tr>
+                <td><a href="javascript:void(0);" onclick="showLoanDetails('loanDetails3')">Michael Johnson</a></td>
+                <td>michael.johnson@example.com</td>
+                <td>Car Loan</td>
+                <td>$25,000</td>
+            </tr>
+            <!-- Add more loan requests as needed -->
+        </table>
+
+        <!-- Loan Details -->
+        <div id="loanDetails1" class="loan-details" style="display: none;">
+            <h3>Loan Details for John Doe</h3>
+            <p><strong>Email:</strong> john.doe@example.com</p>
+            <p><strong>Salary:</strong> $50,000</p>
+            <p><strong>Employed:</strong> NO</p>
+
+            <p><strong>Loan Type:</strong> Personal Loan</p>
+            <p><strong>Amount:</strong> $10,000</p>
+            <button onclick="alert('BAD , 200')">Credit Score</button>
+            <form id="decisionForm1" onsubmit="event.preventDefault(); makeDecision('decisionForm1'); return false;">
+                <label for="clientId1">Client ID:</label>
+                <input type="text" id="clientId1" name="clientId" value="12345" readonly>
+                <div class="decision-buttons">
+                    <label for="decision1">Decision:</label>
+                    <select id="decision1" name="decision" required>
+                        <option value="" disabled selected>Select decision</option>
+                        <option value="approve">Approve</option>
+                        <option value="deny">Deny</option>
+                    </select>
+                    <button type="submit">SUBMIT</button>
+                </div>
+                <p class="message" style="display: none;"></p>
+            </form>
+        </div>
+
+        <div id="loanDetails2" class="loan-details" style="display: none;">
+            <h3>Loan Details for Jane Smith</h3>
+            <p><strong>Email:</strong> jane.smith@example.com</p>
+            <p><strong>Salary:</strong> $500,000</p>
+            <p><strong>Employed:</strong> YES</p>
+            <p><strong>Employer Name:</strong> MICROSOFT COMPANY</p>
+            <p><strong>Loan Type:</strong> Mortgage Loan</p>
+            <p><strong>Amount:</strong> $200,000</p>
+            <button onclick="alert('GOOD , 700')">Credit Score</button>
+
+            <form id="decisionForm2" onsubmit="event.preventDefault(); makeDecision('decisionForm2'); return false;">
+                <label for="clientId2">Client ID:</label>
+                <input type="text" id="clientId2" name="clientId" value="54321" readonly>
+                <div class="decision-buttons">
+                    <label for="decision2">Decision:</label>
+                    <select id="decision2" name="decision" required>
+                        <option value="" disabled selected>Select decision</option>
+                        <option value="approve">Approve</option>
+                        <option value="deny">Deny</option>
+                    </select>
+                    <button type="submit">SUBMIT</button>
+                </div>
+                <p class="message" style="display: none;"></p>
+            </form>
+        </div>
+
+        <div id="loanDetails3" class="loan-details" style="display: none;">
+            <h3>Loan Details for Michael Johnson</h3>
+            <p><strong>Email:</strong> michael.johnson@example.com</p>
+            <p><strong>Salary:</strong> $15,000</p>
+            <p><strong>Employed:</strong> YES</p>
+            <p><strong>Employer Name:</strong> Nestle Company</p>
+            <p><strong>Loan Type:</strong> Car Loan</p>
+            <p><strong>Amount:</strong> $25,000</p>
+            <button onclick="alert('GOOD , 680')">Credit Score</button>
+            <form id="decisionForm3" onsubmit="event.preventDefault(); makeDecision('decisionForm3'); return false;">
+                <label for="clientId3">Client ID:</label>
+                <input type="text" id="clientId3" name="clientId" value="98765" readonly>
+                <div class="decision-buttons">
+                    <label for="decision3">Decision:</label>
+                    <select id="decision3" name="decision" required>
+                        <option value="" disabled selected>Select decision</option>
+                        <option value="approve">Approve</option>
+                        <option value="deny">Deny</option>
+                    </select>
+                    <button type="submit">SUBMIT</button>
+                </div>
+                <p class="message" style="display: none;"></p>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <a href="banker-home.html"><button>Go Back to Banker Home Page</button></a>
+
+        <p>&copy; 2023 Your Bank. All rights reserved.</p>
+    </footer>
+
+    <script>function showLoanDetails(loanId) {
+            var loanDetails = document.getElementById(loanId);
+            loanDetails.style.display = "block";
+        }
+
+        function makeDecision(formId) {
+            var form = document.getElementById(formId);
+            var clientId = form.clientId.value;
+            var decision = form.decision.value;
+
+            // Perform decision logic here
+
+            // Display the decision message on top
+            var message = form.parentNode.querySelector(".message");
+            message.style.display = "block";
+            message.textContent = "Decision: " + decision;
+
+            // Hide the loan details
+            var loanDetails = form.parentNode;
+            loanDetails.style.display = "none";
+
+            alert("Decision made for Client ID: " + clientId + ", Decision: " + decision);
+        }</script>
+</body>
+
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

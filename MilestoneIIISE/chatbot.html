@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Bank</title>
+    <style>
+        /* Styles for chatbot interface */
+        .chatbot-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .chatbot-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .chatbot-body {
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            min-height: 150px;
+        }
+
+        .chatbot-input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .chatbot-button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        .chatbot-response {
+            margin-top: 10px;
+        }
+
+        .chatbot-robot {
+            width: 50px;
+            height: 50px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            margin: 0 auto;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* Bank logo */
+        .bank-logo {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Home icon */
+        .home-icon {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+            .home-icon a {
+                display: inline-block;
+                margin-right: 10px;
+            }
+    </style>
+    <script>function processInput() {
+            var userInput = document.getElementById("user-input").value.toLowerCase();
+            var response = "";
+
+            if (userInput.includes("car") || userInput.includes("truck") || userInput.includes("motorcycle")) {
+                response = "Car loan is the best loan for you.";
+            } else if (userInput.includes("personal") || userInput.includes("family") || userInput.includes("school")) {
+                response = "Personal loan can fulfill your financial needs.";
+            } else if (userInput.includes("mortgage") || userInput.includes("house") || userInput.includes("villa")) {
+                response = "Mortgage loan can help you finance your dream home.";
+            } else if (userInput.includes("save") || userInput.includes("freeze") || userInput.includes("profit")) {
+                response = "You can apply for a certificate through our online banking platform.";
+            } else if (userInput.includes("purchase") || userInput.includes("credit") || userInput.includes("shopping")) {
+                response = "To get a credit card, please apply online.";
+            } else {
+                response = "We offer various financial services. How can we assist you today?";
+            }
+
+            document.getElementById("response").innerHTML = response;
+        }
+
+        function goHome() {
+            window.location.href = "home.html";
+        }</script>
+</head>
+<body>
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <img src="logo2.jpg" alt="Bank Logo" class="bank-logo">
+            <h1>Online Bank Chatbot</h1>
+        </div>
+        <div class="chatbot-body">
+            <div class="chatbot-robot">&#x1F916;</div>
+            <label for="user-input">Hi, I am gigi. How can I help you today?</label>
+            <input type="text" id="user-input" class="chatbot-input">
+            <button onclick="processInput()" class="chatbot-button">Submit</button>
+            <p id="response" class="chatbot-response"></p>
+        </div>
+        <div class="home-icon">
+            <a href="home.html"><img src="img.png" alt="Home Icon" width="32" height="32" onclick="goHome()"></a>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2023 Online Bank. All rights reserved.
+    </div>
+</body>
+</html>

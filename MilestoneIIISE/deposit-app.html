@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        /* CSS styling for the page goes here */
+
+        /* Body styles */
+        body {
+            background-color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #0066cc;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #fff;
+            border: 2px solid #0066cc;
+            border-radius: 10px;
+        }
+
+
+        /* Heading styles */
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #0066cc;
+        }
+
+        /* Form styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #0066cc; /* Add this line to add border */
+        }
+
+        .button {
+            display: block;
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .button:hover {
+                background-color: #004b8c;
+            }
+
+        .message {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 5cm;
+            height: 5cm;
+        }
+
+            .logo img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+
+        /* Hide form elements after submission */
+        .form-group,
+        .submit-button {
+            display: block;
+        }
+
+        .confirmation-container {
+            display: none;
+        }
+
+        /* Home icon */
+        .home-icon {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+            .home-icon a {
+                display: inline-block;
+                margin-right: 10px;
+            }
+
+        /* Footer styles */
+        .footer {
+            background-color: #0066cc;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+            .footer p {
+                margin: 0;
+            }
+    </style>
+</head>
+<body>
+    <!-- HTML content of the form goes here -->
+    <div class="logo">
+        <img src="logo2.jpg" alt="Bank Logo Image">
+    </div>
+    <div class="container" id="formContainer">
+        <h2>Deposit Application</h2>
+        <form id="depositApplicationForm" onsubmit="event.preventDefault(); submitForm();">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="accountType">Account Type:</label>
+                <select id="accountType" name="accountType" onchange="updateAmountLeft();" required>
+                    <option value="savings">Savings Account</option>
+                    <option value="current">Current Account</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amountLeft">Amount Left in Account:</label>
+                <input type="text" id="amountLeft" name="amountLeft" readonly>
+            </div>
+            <div class="form-group">
+                <label for="certificateType">Certificate Type:</label>
+                <select id="certificateType" name="certificateType" onchange="updateInterest(); updateCertificateAmount();" required>
+                    <option value="1year">Certificate 1 Year</option>
+                    <option value="2year">Certificate 2 Year</option>
+                    <option value="3year">Certificate 3 Year</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="interest">Interest (%):</label>
+                <input type="number" id="interest" name="interest" readonly required>
+            </div>
+            <div class="form-group">
+                <label for="certificateAmount">Certificate Amount:</label>
+                <input type="number" id="certificateAmount" name="certificateAmount" required>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms"><a href="#" onclick="showTerms()">Terms and Conditions</a></label>
+            </div>
+            <button type="button" class="button" onclick="goBack()">Back</button>
+
+            <!-- Home icon -->
+            <div class="home-icon">
+                <a href="home.html"><img src="img.png" alt="Home Icon" width="32" height="32"></a>
+            </div>
+
+            <button type="submit" class="button submit-button">Submit</button>
+        </form>
+
+        <div class="confirmation-container" id="confirmationContainer">
+            <p class="message">Thank you for your application. Your deposit will be processed.</p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>2023 AANHY Bank.</p>
+    </div>
+
+    <script>function updateInterest() {
+            var certificateType = document.getElementById("certificateType").value;
+            var interestField = document.getElementById("interest");
+
+            if (certificateType === "1year") {
+                interestField.value = "10";
+            } else if (certificateType === "2year") {
+                interestField.value = "12.5";
+            } else if (certificateType === "3year") {
+                interestField.value = "15";
+            }
+        }
+
+        function updateAmountLeft() {
+            var accountType = document.getElementById("accountType").value;
+            var amountLeftField = document.getElementById("amountLeft");
+
+            if (accountType === "savings") {
+                amountLeftField.value = "800000";
+            } else if (accountType === "current") {
+                amountLeftField.value = "100000";
+            }
+        }
+
+        function showTerms() {
+            var terms = "By clicking 'Submit,' you are agreeing to freeze your money. Breaking the certificate will result in a fee.";
+            alert(terms);
+        }
+
+        function goBack() {
+            window.location.href = "deposit-home.html";
+        }
+
+        function submitForm() {
+            var termsChecked = document.getElementById("terms").checked;
+            var submitButton = document.querySelector(".submit-button");
+            var confirmationContainer = document.getElementById("confirmationContainer");
+            var form = document.getElementById("depositApplicationForm");
+
+            form.style.display = "none";
+            if (termsChecked) {
+                // Display a confirmation message
+                confirmationContainer.style.display = "block";
+
+                // Hide the form elements
+                form.style.display = "none";
+                submitButton.style.display = "none";
+            } else {
+                alert("Please agree to the terms and conditions.");
+            }
+        }</script>
+</body>
+</html>
