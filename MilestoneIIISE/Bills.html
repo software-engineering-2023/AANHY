@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+         <title>Manage Bills and Donations</title>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .form-container {
+            display: none;
+            margin-bottom: 30px;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        .form-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+        }
+
+        .form-field label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .form-field input[type="text"],
+        .form-field input[type="number"],
+        .form-field textarea {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        .form-field textarea {
+            height: 80px;
+        }
+
+        .form-submit {
+            text-align: center;
+        }
+
+        .success-message {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .back-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .savings-option {
+            display: none;
+        }
+
+        .savings-option.active {
+            display: block;
+        }
+    </style>
+    <script>
+        var disabledBills = [];
+
+        function showForm(formId) {
+            var formContainers = document.querySelectorAll('.form-container');
+            formContainers.forEach(function (container) {
+                container.classList.remove('active');
+            });
+
+            var selectedForm = document.getElementById(formId);
+            selectedForm.classList.add('active');
+        }
+
+        function handleFormSubmit(formId) {
+            var successMessage = document.getElementById('success-message');
+            successMessage.style.display = 'block';
+
+            if (formId === 'bills-form') {
+                successMessage.textContent = "Bill Paid Successfully";
+                disableSelectedBill();
+            } else if (formId === 'donations-form') {
+                successMessage.textContent = "Donation Done Successfully";
+            }
+
+            // Reset the form after 3 seconds
+            setTimeout(function () {
+                resetForm(formId);
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        function disableSelectedBill() {
+            var billTypeSelect = document.getElementById('bill-type');
+            var selectedBillType = billTypeSelect.value;
+
+            var billOptions = billTypeSelect.getElementsByTagName('option');
+            for (var i = 0; i < billOptions.length; i++) {
+                var billOption = billOptions[i];
+                if (billOption.value === selectedBillType) {
+                    billOption.disabled = true;
+                    billOption.dataset.paid = 'true';
+                }
+            }
+        }
+
+        function resetForm(formId) {
+            var form = document.getElementById(formId);
+            form.reset();
+
+            if (formId === 'bills-form') {
+                var billTypeSelect = document.getElementById('bill-type');
+                var billOptions = billTypeSelect.getElementsByTagName('option');
+                for (var i = 0; i < billOptions.length; i++) {
+                    var billOption = billOptions[i];
+                    billOption.disabled = false;
+                    delete billOption.dataset.paid;
+                }
+            }
+        }
+
+        function handlePaymentChange() {
+            var paymentCheckbox = document.getElementById('full-payment');
+            var paymentButton = document.getElementById('payment-button');
+            var savingsOption = document.getElementById('savings-option');
+
+            if (paymentCheckbox.checked) {
+                paymentButton.disabled = true;
+                savingsOption.classList.add('active');
+            } else {
+                paymentButton.disabled = false;
+                savingsOption.classList.remove('active');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Manage Bills and Donations</h2>
+        <div class="button-container">
+            <button class="button" onclick="showForm('bills-form')">Pay Bill</button>
+            <button class="button" onclick="showForm('donations-form')">Make Donation</button>
+        </div>
+
+        <div id="bills-form" class="form-container">
+            <h3 class="form-title">Pay Bill</h3>
+            <form onsubmit="event.preventDefault(); handleFormSubmit('bills-form');">
+                <div class="form-field">
+                    <label for="bill-type">Bill Type:</label>
+                    <select id="bill-type" name="bill-type">
+                        <option value="water" data-requested-amount="100">Water Company ($100)</option>
+                        <option value="electricity" data-requested-amount="150">Electricity Company ($150)</option>
+                        <option value="mobile" data-requested-amount="50">Mobile Phone ($50)</option>
+                        <option value="internet" data-requested-amount="80">Internet ($80)</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" name="amount" placeholder="Enter the bill amount" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="payment-source">Payment Source:</label>
+                    <select id="payment-source" name="payment-source">
+                        <option value="current">Current Account</option>
+                        <option value="savings">Savings Account</option>
+                    </select>
+                </div>
+
+                <div class="savings-option">
+                    <div class="form-field">
+                        <label for="savings-pin">Savings Account PIN:</label>
+                        <input type="password" id="savings-pin" name="savings-pin" placeholder="Enter your savings account PIN">
+                    </div>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit" id="payment-button">Pay Bill</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="donations-form" class="form-container">
+            <h3 class="form-title">Make Donations</h3>
+            <form onsubmit="event.preventDefault(); handleFormSubmit('donations-form');">
+                <div class="form-field">
+                    <label for="charity">Charity:</label>
+                    <input type="text" id="charity" name="charity" placeholder="Enter the charity name" required>
+                </div>
+                <div class="form-field">
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" name="amount" placeholder="Enter the donation amount" required>
+                </div>
+                <div class="form-submit">
+                    <button type="submit">Donate</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="success-message" class="success-message"></div>
+
+        <a href="ClientHomepage.aspx" class="back-button">Go Back to Homepage</a>
+    </div>
+</body>
+</html>
