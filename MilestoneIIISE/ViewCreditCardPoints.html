@@ -1,107 +1,105 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>View Credit Card Points and Redeem for Cashback</title>
-  <style>
-    body {
-      background-color: #0a192f;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #fff;
-    }
+    <style>
+        body {
+            background-color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #000;
+        }
 
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 50px;
-      background-color: #14213d;
-      border-radius: 10px;
-    }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
 
-    h2 {
-      font-size: 30px;
-      margin-bottom: 30px;
-      text-align: center;
-    }
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
 
-    p {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
 
-    .confirmation-text {
-      font-weight: bold;
-      text-align: center;
-    }
+        .confirmation-text {
+            font-weight: bold;
+            text-align: center;
+        }
 
-    button {
-      background-color: #ffb703;
-      color: #fff;
-      border: none;
-      padding: 15px 25px;
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-top: 30px;
-      display: block;
-      margin: 0 auto;
-    }
+        button {
+            background-color: #031cff;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+            display: block;
+            margin: 0 auto;
+        }
 
-    button:hover {
-      background-color: #ff8f00;
-    }
-  </style>
+        button:hover {
+            background-color: #0018a8;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h2>View Credit Card Points and Redeem for Cashback</h2>
+    <div class="container">
+        <h2>View Credit Card Points and Redeem for Cashback</h2>
 
-    <p>Your current credit card points: <span id="currentPoints">500</span></p>
+        <p>Your current credit card points: <span id="currentPoints">500</span></p>
 
-    <p>To redeem for cashback, please enter the amount of points:</p>
+        <p>To redeem for cashback, please enter the amount of points:</p>
 
-    <form action="#" method="post">
-      <label for="points">Points:</label>
-      <input type="number" id="points" name="points" min="100" max="10000" required>
+        <form action="#" method="post">
+            <label for="points">Points:</label>
+            <input type="number" id="points" name="points" min="100" max="10000" required>
 
-      <button type="submit" onclick="redeemPoints(event)">Redeem for Cashback</button>
-    </form>
+            <button type="submit" onclick="redeemPoints(event)">Redeem for Cashback</button>
+        </form>
 
-    <p id="confirmationMessage" class="confirmation-text"></p>
+        <p id="confirmationMessage" class="confirmation-text"></p>
 
-              <a href="ClientHomepage.html"><button>Go Back to Homepage</a>
+        <a href="ClientHomepage.html"><button>Go Back to Homepage</button></a>
 
+        <script>
+            var currentPointsElement = document.getElementById("currentPoints");
+            var confirmationMessage = document.getElementById("confirmationMessage");
 
-    <script>
-        var currentPointsElement = document.getElementById("currentPoints");
-        var confirmationMessage = document.getElementById("confirmationMessage");
+            function redeemPoints(event) {
+                event.preventDefault(); // Prevent form submission
 
-        function redeemPoints(event) {
-            event.preventDefault(); // Prevent form submission
+                var pointsInput = document.getElementById("points");
+                var points = parseInt(pointsInput.value);
 
-            var pointsInput = document.getElementById("points");
-            var points = parseInt(pointsInput.value);
+                var currentPoints = parseInt(currentPointsElement.innerText);
+                var cashbackAmount = points * 0.01;
 
-            var currentPoints = parseInt(currentPointsElement.innerText);
-            var cashbackAmount = points * 0.01;
+                if (points <= currentPoints) {
+                    currentPoints -= points;
+                    currentPointsElement.innerText = currentPoints;
 
-            if (points <= currentPoints) {
-                currentPoints -= points;
-                currentPointsElement.innerText = currentPoints;
-
-                confirmationMessage.innerText = "WOHOO! Points Redeemed! Cashback amount: LE" + cashbackAmount.toFixed(2);
-            } else {
-                confirmationMessage.innerText = "Write Some points?!";
+                    confirmationMessage.innerText = "WOHOO! Points Redeemed! Cashback amount: LE" + cashbackAmount.toFixed(2);
+                } else {
+                    confirmationMessage.innerText = "Write Some points?!";
+                }
             }
-        }
 
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-  </div>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+    </div>
 </body>
 </html>

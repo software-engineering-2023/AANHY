@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            color: blue;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: white;
+            color: blue;
+        }
+
+        .logo {
+            height: 40px;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .bank-logo {
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .home-icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .save-button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .footer {
+            background-color: blue;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .info-updated {
+            display: none;
+            background-color: lightblue;
+            color: blue;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .password-fields {
+            display: none;
+        }
+
+        .password-label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+    <script>document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.save-button').addEventListener('click', function () {
+                document.querySelector('.info-updated').style.display = 'block';
+            });
+
+            document.querySelector('.change-password-button').addEventListener('click', function () {
+                var passwordFields = document.querySelector('.password-fields');
+                passwordFields.style.display = passwordFields.style.display === 'none' ? 'block' : 'none';
+            });
+        });</script>
+</head>
+<body>
+    <div class="header">
+        <img src="logo2.jpg" alt="Bank Logo" class="bank-logo">
+       
+    </div>
+
+    <div class="main-content">
+        <h1>Client Information</h1>
+
+        <form>
+            <div class="form-group">
+                <label for="name" class="form-label">*Name:</label>
+                <input type="text" id="name" class="form-input" value="John Doe" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="id" class="form-label">*ID:</label>
+                <input type="text" id="id" class="form-input" value="12345" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="age" class="form-label">*Age:</label>
+                <input type="text" id="age" class="form-input" value="30" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" class="form-input" value="johndoe@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="phone" class="form-label">Phone:</label>
+                <input type="tel" id="phone" class="form-input" value="123-456-7890">
+            </div>
+
+            <div class="form-group">
+                <label for="address" class="form-label">Address:</label>
+                <input type="text" id="address" class="form-input" value="123 Street, City, Country">
+            </div>
+
+            <button type="button" class="change-password-button">Change Password</button>
+
+            <div class="password-fields">
+                <div class="form-group">
+                    <label for="new-password" class="password-label">New Password:</label>
+                    <input type="password" id="new-password" class="form-input">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password" class="password-label">Confirm Password:</label>
+                    <input type="password" id="confirm-password" class="form-input">
+                </div>
+            </div>
+
+            <button type="button" class="save-button">Save</button>
+
+            <div class="info-updated">Your information has been updated.</div>
+        </form>
+    </div>
+
+    <a href="ClientHomepage.html"><img src="img.png" alt="Home Icon" class="home-icon"></a>
+
+    <div class="footer">
+        &copy; 2023 Your Company. All rights reserved.
+    </div>
+</body>
+</html>

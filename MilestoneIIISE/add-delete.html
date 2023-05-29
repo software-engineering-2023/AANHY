@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            color: #0066cc;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: white;
+            color: #0066cc;
+        }
+
+        .logo {
+            height: 40px;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .bank-logo {
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .home-icon {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .table-container {
+            margin-top: 20px;
+        }
+
+        .account-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .account-table th,
+            .account-table td {
+                padding: 10px;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .account-table th {
+                background-color: #0066cc;
+                color: white;
+            }
+
+        .add-account-form {
+            margin-top: 20px;
+        }
+
+            .add-account-form .form-group {
+                margin-bottom: 10px;
+            }
+
+            .add-account-form .form-label {
+                font-weight: bold;
+            }
+
+            .add-account-form .form-input {
+                width: 100%;
+                padding: 5px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+            }
+
+        .add-account-button {
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .deactivate-button {
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .footer {
+            background-color: #0066cc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="logo2.jpg" alt="Bank Logo" class="bank-logo">
+        <a href="ClientHomepage.html"><img src="img.png" alt="Home Icon" class="home-icon"></a>
+    </div>
+
+    <div class="main-content">
+        <h1>View/Add Account</h1>
+
+        <div class="table-container">
+            <table class="account-table">
+                <thead>
+                    <tr>
+                        <th>Account ID</th>
+                        <th>Account Type</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12345</td>
+                        <td>Savings</td>
+                        <td>$1000</td>
+                        <td>Active</td>
+                        <td><button class="deactivate-button">Deactivate</button></td>
+                    </tr>
+                    <tr>
+                        <td>67890</td>
+                        <td>Checking</td>
+                        <td>$500</td>
+                        <td>Active</td>
+                        <td><button class="deactivate-button">Deactivate</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="add-account-form">
+            <h2>Add Account</h2>
+            <form>
+                <div class="form-group">
+                    <label for="account-type" class="form-label">Account Type:</label>
+                    <select id="account-type" class="form-input">
+                        <option value="savings">Savings</option>
+                        <option value="checking">Checking</option>
+                        <option value="credit">Credit</option>
+                    </select>
+                </div>
+                <button type="button" class="add-account-button">Add Account</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2023 Your Company. All rights reserved.
+    </div>
+
+    <script>document.addEventListener('DOMContentLoaded', function () {
+            var deactivateButtons = document.querySelectorAll('.deactivate-button');
+
+            deactivateButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var row = this.parentNode.parentNode;
+                    var statusCell = row.querySelector('td:nth-child(4)');
+                    statusCell.textContent = 'Inactive';
+                });
+            });
+
+            document.querySelector('.add-account-button').addEventListener('click', function () {
+                var accountType = document.querySelector('#account-type').value;
+
+                if (accountType !== '') {
+                    var accountId = Math.floor(Math.random() * 100000) + 1;
+                    var amount = '$0';
+                    var status = 'Active';
+
+                    var newRow = document.createElement('tr');
+                    newRow.innerHTML = `<td>${accountId}</td><td>${accountType}</td><td>${amount}</td><td>${status}</td><td><button class="deactivate-button">Deactivate</button></td>`;
+
+                    var accountTableBody = document.querySelector('.account-table tbody');
+                    accountTableBody.appendChild(newRow);
+
+                    // Add event listener for the newly added deactivate button
+                    var newDeactivateButton = newRow.querySelector('.deactivate-button');
+                    newDeactivateButton.addEventListener('click', function () {
+                        var row = this.parentNode.parentNode;
+                        var statusCell = row.querySelector('td:nth-child(4)');
+                        statusCell.textContent = 'Inactive';
+                    });
+                }
+            });
+        });</script>
+</body>
+</html>
