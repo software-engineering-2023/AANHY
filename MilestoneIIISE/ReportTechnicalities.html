@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head runat="server">
-    <title>Report Credit Card Theft/Loss/Damage</title>
+    <title>Report Technical Issues</title>
     <style>
         body {
             background-color: #f2f2f2;
@@ -73,21 +73,49 @@
             padding: 10px;
             border-radius: 5px;
         }
+
+        .message-container {
+            background-color: #fff;
+            border: 2px solid #004b8f;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .success-message {
+            color: #004b8f;
+            font-weight: bold;
+            text-align: center;
+            margin: 0;
+        }
     </style>
+    <script>
+        function displayMessage() {
+            var messageContainer = document.getElementById("messageContainer");
+            messageContainer.style.display = "block";
+        }
+    </script>
 </head>
 
 <body>
     <div class="container">
-        <h2>Report Credit Card Theft/Loss/Damage</h2>
+        <h2>Report Technical Issues</h2>
 
-        <form action="ConfirmationforTheft.aspx" method="post">
-            <label for="cardNumber">Card Number:</label>
-            <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter your card number" required>
+        <form action="TechnicalIssueConfirmation.aspx" method="post">
+            <label for="issueDescription">Issue Description:</label>
+            <textarea id="issueDescription" name="issueDescription" placeholder="Describe the technical issue you're facing" required></textarea>
 
-            <label for="reason">Reason:</label>
-            <textarea id="reason" name="reason" placeholder="Provide details about the theft/loss/damage" required></textarea>
+            <label for="contactEmail">Contact Email:</label>
+            <input type="text" id="contactEmail" name="contactEmail" placeholder="Enter your email address" required>
 
-            <button type="submit">Report and Apply for Replacement</button>
+            <label for="contactNumber">Contact Number:</label>
+            <input type="text" id="contactNumber" name="contactNumber" placeholder="Enter your contact number" required>
+
+            <button type="button" onclick="displayMessage()">Report Issue</button>
+            <div id="messageContainer" class="message-container">
+                <p class="success-message">Thank you for reporting the issue. Our team will look into it.</p>
+            </div>
             <a href="ClientHomepage.html" class="go-back-button">Go Back to Homepage</a>
         </form>
     </div>

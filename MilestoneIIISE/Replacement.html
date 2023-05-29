@@ -12,7 +12,7 @@
         }
 
         header {
-            background-color: #333;
+            background-color: #00172e; /* Changed to a darker blue */
             color: #fff;
             padding: 20px;
             text-align: center;
@@ -73,17 +73,33 @@
         }
 
         footer {
-            background-color: #333;
+            background-color: #00172e; /* Changed to a darker blue */
             color: #fff;
             padding: 10px;
             text-align: center;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #022d5a;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Credit Card Requests</h1>
+        <h1>Replacement Requests</h1>
     </header>
     <div class="content">
         <table>
@@ -127,7 +143,7 @@
     </div>
 
     <footer>
-        <a href="BankerHomepage.aspx">
+        <a href="BankerHomepage.html">
             <button>Go Back to Banker Home Page</button>
         </a>
         <p>&copy; 2023 Your Bank. All rights reserved.</p>

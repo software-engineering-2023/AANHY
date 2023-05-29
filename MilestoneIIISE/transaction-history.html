@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction History</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #0a192f;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .client-select {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="logo2.jpg" alt="Bank Logo" class="logo">
+        <h1>Transaction History</h1>
+    </div>
+
+    <section class="content">
+        <h2>Transaction History</h2>
+        <div class="client-select">
+            <label for="client-id">Select Client ID:</label>
+            <select id="client-id" onchange="showTransactionHistory()">
+                <option value="1">Client 1</option>
+                <option value="2">Client 2</option>
+                <!-- Add more options for additional clients -->
+            </select>
+        </div>
+        <table id="transaction-table">
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Account Number</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Transaction rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <a href="BankerHomepage.html"><button>Go Back to Banker Home Page</button></a>
+
+        <p>&copy; 2023 Your Bank. All rights reserved.</p>
+    </footer>
+    <script>function showTransactionHistory() {
+            var clientId = document.getElementById("client-id").value;
+            var transactionTable = document.getElementById("transaction-table");
+
+            // Clear existing transaction rows
+            transactionTable.tBodies[0].innerHTML = "";
+
+            // Fetch transaction history for the selected client ID
+            var transactions = getTransactionsByClientId(clientId);
+
+            for (var i = 0; i < transactions.length; i++) {
+                var transaction = transactions[i];
+
+                var row = document.createElement("tr");
+                row.innerHTML = "<td>" + transaction.transactionId + "</td>" +
+                    "<td>" + transaction.date + "</td>" +
+                    "<td>" + transaction.amount + "</td>" +
+                    "<td>" + transaction.accountNumber + "</td>" +
+                    "<td>" + transaction.description + "</td>";
+
+                transactionTable.tBodies[0].appendChild(row);
+            }
+        }
+
+        function getTransactionsByClientId(clientId) {
+            // Replace this code with your logic to fetch transaction data from the server/database
+            // Return an array of transaction objects for the selected client ID
+
+            // Example code to generate random transactions for different clients
+            var transactions = [];
+
+            if (clientId === "1") {
+                transactions = [
+                    {
+                        transactionId: 1,
+                        date: "2023-05-01",
+                        amount: "$100",
+                        accountNumber: "AC12345678",
+                        description: "Payment",
+                    },
+                    {
+                        transactionId: 2,
+                        date: "2023-05-05",
+                        amount: "$50",
+                        accountNumber: "AC12345678",
+                        description: "Withdrawal",
+                    },
+                ];
+            } else if (clientId === "2") {
+                transactions = [
+                    {
+                        transactionId: 1,
+                        date: "2023-05-02",
+                        amount: "$200",
+                        accountNumber: "AC98765432",
+                        description: "Payment",
+                    },
+                    {
+                        transactionId: 2,
+                        date: "2023-05-06",
+                        amount: "$75",
+                        accountNumber: "AC98765432",
+                        description: "Withdrawal",
+                    },
+                ];
+            }
+            // Add more conditionals for additional client IDs
+
+            return transactions;
+        }
+
+        // Call showTransactionHistory initially to populate the table
+        showTransactionHistory();</script>
+</body>
+</html>
