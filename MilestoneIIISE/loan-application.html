@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        /* CSS styling for the page goes here */
+
+        /* Body styles */
+        body {
+            background-color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #0066cc;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #fff;
+            border: 2px solid #0066cc;
+            border-radius: 10px;
+        }
+
+        /* Heading styles */
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Form styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            background-color: lightblue;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 2px solid blue !important; /* Add !important to override other styles */
+        }
+
+            input[type="text"]:focus,
+            input[type="number"]:focus,
+            select:focus,
+            textarea:focus {
+                border-color: lightblue !important; /* Add focus style to keep it blue when active */
+            }
+
+        textarea {
+            background-color: lightblue;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 2px solid blue !important; /* Add !important to override other styles */
+        }
+
+            textarea:focus {
+                border-color: lightblue !important; /* Add focus style to keep it blue when active */
+            }
+
+
+        .button {
+            display: block;
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .button:hover {
+                background-color: #004c99;
+            }
+
+        .message {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 5cm;
+            height: 5cm;
+        }
+
+            .logo img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+
+        .calculate-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+            .calculate-button:hover {
+                background-color: #45a049;
+            }
+
+      
+        /* ... Other CSS styles ... */
+        #homeButton img {
+            width: 30px; /* Adjust the width as needed */
+            height: 30px; /* Adjust the height as needed */
+        }
+
+        /* ... Other CSS styles ... */
+
+
+    </style>
+</head>
+<body>
+    <!-- HTML content of the form goes here -->
+    <div class="logo">
+        <img src="logo2.jpg" alt="Bank Logo Image">
+    </div>
+    <div class="container">
+        <h2>Loan Application</h2>
+        <form id="loanApplicationForm" onsubmit="event.preventDefault(); submitForm();">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <!-- Add more form fields as needed -->
+            <div class="form-group">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="ID" required>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="employed" name="employed">
+                <label for="employed">Employed</label>
+            </div>
+            <div class="form-group" id="employerField" style="display: none;">
+                <label for="employer">Employer Name:</label>
+                <input type="text" id="employer" name="employer">
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary:</label>
+                <select id="salary" name="salary" required>
+                    <option value="5000">Up to $5000</option>
+                    <option value="25000">$5000 - $25,000</option>
+                    <option value="50000">$25,000 - $50,000</option>
+                    <option value="75000">$50,000 - $75,000</option>
+                    <option value="100000">$75,000 - $100,000</option>
+                    <option value="100000">Above $100,000</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="loanAmount">Loan Amount:</label>
+                <input type="number" id="loanAmount" name="loanAmount" required>
+            </div>
+            <div class="form-group">
+                <label for="loanType">Loan Type:</label>
+                <select id="loanType" name="loanType" required>
+                    <option value="mortgage">Mortgage Loan</option>
+                    <option value="personal">Personal Loan</option>
+                    <option value="car">Car Loan</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="interestRate">Interest Rate:</label>
+                <input type="text" id="interestRate" name="interestRate" readonly>
+            </div>
+            <div class="form-group">
+                <label for="loanDuration">Loan Duration (months):</label>
+                <input type="number" id="loanDuration" name="loanDuration" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Additional Details:</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <button type="button" class="button" onclick="toggleLoanCalculator()">Loan Calculator</button>
+            <div id="loanCalculator" style="display: none;">
+                <div class="calculator-container">
+                    <div class="calculator-input">
+                        <label for="calculatorLoanAmount">Loan Amount:</label>
+                        <input type="number" id="calculatorLoanAmount" name="calculatorLoanAmount">
+                    </div>
+                    <div class="calculator-input">
+                        <label for="calculatorInterestRate">Interest Rate (%):</label>
+                        <input type="number" id="calculatorInterestRate" name="calculatorInterestRate" step="0.01">
+                    </div>
+                    <div class="calculator-input">
+                        <label for="calculatorLoanTerm">Loan Duration (months):</label>
+                        <input type="number" id="calculatorLoanTerm" name="calculatorLoanTerm">
+                    </div>
+
+                    <button type="button" class="button calculate-button" onclick="calculateLoan()">Calculate</button>
+                    <div class="calculator-result" id="result"></div>
+                </div>
+            </div>
+            <button type="submit" class="button">Submit Application</button>
+            <a href="loan-home.html" class="button" id="loansButton">GO BACK</a>
+            <a href="home.html" id="homeButton">
+                <img src="img.png" alt="Home">
+            </a>
+
+        </form>
+    </div>
+
+    <div id="successMessage" class="message" style="display: none;"></div>
+    <div id="buttonContainer" style="display: none;">
+        <a href="home.html" id="homeButton">
+            <img src="img.png" alt="Home">
+        </a>
+    </div>
+
+    <script>function toggleEmployerField() {
+            var employerField = document.getElementById("employerField");
+            var employedCheckbox = document.getElementById("employed");
+
+            employerField.style.display = employedCheckbox.checked ? "block" : "none";
+        }
+
+        function toggleLoanCalculator() {
+            var loanCalculator = document.getElementById("loanCalculator");
+            var loanCalculatorButton = document.querySelector("button[onclick='toggleLoanCalculator()']");
+
+            loanCalculator.style.display = loanCalculator.style.display === "none" ? "block" : "none";
+            loanCalculatorButton.innerHTML = loanCalculator.style.display === "none" ? "Loan Calculator" : "Hide Calculator";
+        }
+
+        function calculateLoan() {
+            var loanAmount = parseFloat(document.getElementById("calculatorLoanAmount").value);
+            var interestRate = parseFloat(document.getElementById("calculatorInterestRate").value);
+            var loanTerm = parseFloat(document.getElementById("calculatorLoanTerm").value);
+
+            var interest = loanAmount * (interestRate / 100);
+            var totalAmount = loanAmount + interest;
+            var monthlyInstallment = totalAmount / loanTerm;
+
+            document.getElementById("result").innerHTML = "Monthly Installment: $" + monthlyInstallment.toFixed(2) + "<br>Total Amount: $" + totalAmount.toFixed(2);
+        }
+
+        function submitForm() {
+            var form = document.getElementById("loanApplicationForm");
+            var successMessage = document.getElementById("successMessage");
+            var buttonContainer = document.getElementById("buttonContainer");
+            var homeButton = document.getElementById("homeButton");
+            form.style.display = "none";
+            successMessage.innerText =
+                "The loan application is successfully submitted and is now being reviewed.";
+            successMessage.style.display = "block";
+            buttonContainer.style.display = "block";
+            homeButton.style.display = "block";
+        }
+
+        document.getElementById("loanApplicationForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            submitForm(); // Call the custom form submission function
+        });
+
+        document.getElementById("loanType").addEventListener("change", function () {
+            var loanType = document.getElementById("loanType").value;
+
+            if (loanType === "mortgage") {
+                document.getElementById("interestRate").value = "3.5%";
+            } else if (loanType === "personal") {
+                document.getElementById("interestRate").value = "6.0%";
+            } else if (loanType === "car") {
+                document.getElementById("interestRate").value = "4.2%";
+            }
+        });
+
+        document.getElementById("employed").addEventListener("change", toggleEmployerField);</script>
+</body>
+</html>
