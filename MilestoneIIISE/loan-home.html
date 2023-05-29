@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank Loans</title>
+    <style>
+        /* CSS styling for the page goes here */
+
+        /* Body styles */
+        body {
+            background-color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #000;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background-color: #000;
+        }
+
+            .logo img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Heading styles */
+        h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Button styles */
+        .button {
+            display: inline-block;
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+            .button:hover {
+                background-color: #004b8f;
+            }
+
+        /* Loan type content styles */
+        .loan-type-content {
+            display: none;
+            margin-top: 30px;
+            color: #000;
+        }
+
+            .loan-type-content.active {
+                display: block;
+            }
+
+            .loan-type-content img {
+                max-width: 100%;
+                height: auto;
+                margin-right: 20px;
+                float: left;
+                border-radius: 5px;
+                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .loan-type-content p {
+                margin-bottom: 10px;
+            }
+
+            .loan-type-content ul {
+                list-style-type: disc;
+                margin-left: 20px;
+                margin-bottom: 10px;
+            }
+
+        .home-icon {
+            text-align: center;
+            margin-top: 20px;
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #0000ff;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="logo2.jpg" alt="Bank Logo Image">
+    </div>
+
+    <div class="container" id="loanHome">
+        <h2>Loans</h2>
+        <button class="button" onclick="showLoanType('personalLoan')">Personal Loan</button>
+        <button class="button" onclick="showLoanType('carLoan')">Car Loan</button>
+        <button class="button" onclick="showLoanType('mortgageLoan')">Mortgage Loan</button>
+        <a href="loan-application.html" class="button">APPLY FOR A LOAN</a>
+        <a href="my-loan.html" class="button">MY LOANS</a>
+
+        <div class="home-icon">
+            <a href="home.html">
+                <img src="img.png" alt="Home" width="32" height="32">
+            </a>
+        </div>
+    </div>
+
+    <div id="personalLoan" class="container loan-type-content">
+        <h2>Personal Loan</h2>
+        <img src="fam.jpg" alt="Personal Loan Image">
+        <p>"Realize your dreams with AANHY's personal loan. Enjoy competitive rates and flexible terms for a loan that fits your needs."</p>
+        <p>Requirements:</p>
+        <ul>
+            <li>Proof of income</li>
+            <li>Valid identification</li>
+            <li>Good credit score</li>
+        </ul>
+        <p>Fees:</p>
+        <ul>
+            <li>Origination fee: $100</li>
+            <li>Interest charges: 5% per annum</li>
+        </ul>
+        <a href="loan-application.html" class="button">Apply for a Personal Loan</a>
+        <button class="button" onclick="goBack()">Go Back</button>
+        <a href="home.html" class="button">HOME</a>
+    </div>
+
+    <div id="carLoan" class="container loan-type-content">
+        <h2>Car Loan</h2>
+        <img src="bmw.jpg" alt="Car Loan Image">
+        <p>"With a car loan from AANHY, the car you've always wanted can finally be yours. We're offering a competitive interest rate to make your ride a happier one."</p>
+        <p>Requirements:</p>
+        <ul>
+            <li>Proof of income</li>
+            <li>Valid identification</li>
+            <li>Good credit score</li>
+        </ul>
+        <p>Fees:</p>
+        <ul>
+            <li>Down payment: 20% of car value</li>
+            <li>Interest charges: 6% per annum</li>
+        </ul>
+        <a href="loan-application.html" class="button">Apply for a Car Loan</a>
+        <button class="button" onclick="goBack()">Go Back</button>
+        <a href="home.html" class="button">HOME</a>
+    </div>
+
+    <div id="mortgageLoan" class="container loan-type-content">
+        <h2>Mortgage Loan</h2>
+        <img src="villa.jpg" alt="Mortgage Loan Image">
+        <p>"Secure your dream home with AANHY's mortgage loan. Benefit from favorable rates and expert guidance throughout the process."</p>
+        <p>Requirements:</p>
+        <ul>
+            <li>Proof of income</li>
+            <li>Valid identification</li>
+            <li>Good credit score</li>
+        </ul>
+        <p>Fees:</p>
+        <ul>
+            <li>Down payment: 30% of property value</li>
+            <li>Interest charges: 4% per annum</li>
+        </ul>
+        <a href="loan-application.html" class="button">Apply for a Mortgage Loan</a>
+        <button class="button" onclick="goBack()">Go Back</button>
+        <a href="home.html" class="button">HOME</a>
+    </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 AANHY Bank. All rights reserved.</p>
+    </footer>
+
+    <script>function showLoanType(loanType) {
+            const loanHome = document.getElementById("loanHome");
+            const loanTypeContents = document.getElementsByClassName("loan-type-content");
+            for (let i = 0; i < loanTypeContents.length; i++) {
+                loanTypeContents[i].classList.remove("active");
+            }
+
+            const selectedLoanType = document.getElementById(loanType);
+            loanHome.style.display = "none";
+            selectedLoanType.classList.add("active");
+        }
+
+        function goBack() {
+            const loanHome = document.getElementById("loanHome");
+            const loanTypeContents = document.getElementsByClassName("loan-type-content");
+            for (let i = 0; i < loanTypeContents.length; i++) {
+                loanTypeContents[i].classList.remove("active");
+            }
+
+            loanHome.style.display = "block";
+        }</script>
+</body>
+</html>
