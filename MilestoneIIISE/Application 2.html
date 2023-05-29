@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>User Registration</title>
+    <style>
+        /* CSS styling for the page goes here */
+        /* Body styles */
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>User Registration</h2>
+        <form id="registrationForm" onsubmit="event.preventDefault(); registerUser();">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" required>
+
+            <button id="registerButton" disabled>Register</button>
+        </form>
+    </div>
+
+    <script>
+        function registerUser() {
+            // Get form input values
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Perform validation
+            if (name.trim() === '' || email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            // Register the user (dummy implementation)
+            alert("User registration successful!");
+
+            // Redirect to home page (replace "home.html" with the actual home page URL)
+            window.location.href = "Log in.aspx";
+        }
+
+        // Enable the register button when all fields are filled
+        var inputs = document.querySelectorAll("input[required]");
+        var registerButton = document.getElementById("registerButton");
+
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].addEventListener("input", function () {
+                var allFieldsFilled = true;
+
+                for (var j = 0; j < inputs.length; j++) {
+                    if (inputs[j].value.trim() === '') {
+                        allFieldsFilled = false;
+                        break;
+                    }
+                }
+
+                registerButton.disabled = !allFieldsFilled;
+            });
+        }
+    </script>
+</body>
+</html>
